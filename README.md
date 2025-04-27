@@ -119,17 +119,172 @@ X
 ---
 <br />
 
-<h2>Add a DNS Record to the local hosts file</h2>
+<h2>Create a DNS A-Record On The Domain Controller</h2>
 
 
 
 ---
 <br />
-
-<h3>Add the new </h3>
-
+<h3>Log into the Windows 2022 Server Domain Controller</h3>
 
 
-  <img src="" height="50%" width="50%" />
+- Using Remote Desktop, log in with the public IP address for the Windows 2022 Server as shown below.
+
+  <img src="https://github.com/user-attachments/assets/ffe9d33a-159b-4191-b8c6-213463f36c78" height="70%" width="70%" />
 
 
+---
+<br />
+<h3>Open Windows Administrative Tools > DNS Manager</h3>
+
+- We will create a DNS A-Record on the Windows 2022 Server Domain Controller and point it to the Windows 2022 Server's Private IP Address (`10.0.0.5`)
+- Open `DNS` under `Windows Administrative Tools` as shown below.
+- The `DNS Manager` was automatically installed when we [installed the Active Domain Controller the part of the documentation at this link](https://github.com/ian-bates-it/Install-Active-Directory-on-Windows-2022-Server).
+
+
+  <img src="https://github.com/user-attachments/assets/ef7ede9a-b09c-4416-a5bd-ca6495630e58" height="60%" width="60%" />
+
+
+
+---
+<br />
+<h3>Open Forward Lookup Zones in DNS Manager</h3>
+
+1. Click on the DNS Server.
+2. Click on `Forward Lookup Zones`
+3. Click on the Domain Name (in this example, `IanBates.com`).
+4. View the existing DNS records as shown below.
+
+
+  <img src="https://github.com/user-attachments/assets/4776bddf-81ed-412e-80bd-9dd74be89ad0" height="70%" width="70%" />
+
+
+---
+<br />
+<h3>New Host A Record</h3>
+
+- Right-click in the `Domain Manager`
+- Select `New Host (A or AAAA)...` as shown below.
+  <img src="https://github.com/user-attachments/assets/bfbb83a5-788e-4b0b-9593-6979be9eaa3c" height="70%" width="70%" />
+
+
+---
+<br />
+<h3>Create New A-Record For Desired Host Name</h3>
+
+1. Enter the desired host name to serve as a subdomain. In this example, I will use the host name `domain-controller-server`, so the new A-record will point to the fully qualified domain name of `domain-controller-server.IanBates.com.`
+2. Enter the Windows 2022 Server's private IP address. In my example, my server's private IP address is `10.0.0.5`.
+3. Click `Add Host` as shown below.
+
+  <img src="https://github.com/user-attachments/assets/c30d2d5b-8344-47bc-ae4f-ab520b17a620" height="60%" width="60%" />
+
+
+---
+<br />
+<h3>Now the new A-Record Exists. (`domain-controller-server.IanBates.com`)</h3>
+
+- We can now view the new A-Record entry that we created in the `DNS Manager` as shown below.
+
+
+**Confirmation Message**
+
+  <img src="https://github.com/user-attachments/assets/1b250144-6f4b-42a3-875c-9289a941be92" height="40%" width="40%" />
+
+
+**DNS Manager**
+
+  <img src="https://github.com/user-attachments/assets/dc9d0114-6de0-4cd4-a059-871f5669358c" height="70%" width="70%" />
+
+
+
+---
+<br />
+<h3>Ping The New Host Record (`domain-controller-server`) From The Client Virtual Machine</h3>
+
+- From the Windows 10 Pro Client VM, we can ping the new Host Record in PowerShell.
+- Run the command `ping domain-controller-server` and view the connection with 0% packet loss as shown below. The `ping` results successfully returns the correct IP address we set up above (`10.0.0.5`).
+- We are able to get a response from our DNS Server, since it now knows the host record we created (`domain-controller-server`).
+
+  <img src="https://github.com/user-attachments/assets/aa047de8-5e98-4ee6-9af7-627d5044e7f3" height="60%" width="60%" />
+
+
+---
+
+
+---
+---
+<br />
+
+<h2>Edit a DNS A-Record On The Domain Controller</h2>
+
+
+**Purpose Of This Exercise**
+The purpose of this exercise is to replicate a situation where you have an end-user who is trying to access a resource where the DNS changed at the DNS server level, but their local machine is still looking for the old IP address saved in the DNS cache, they will need to have thier DNS cache cleared/updated.
+
+
+
+---
+<br />
+<h3>Edit the IP Address Of The New Host Record (`domain-controller-server`) in DNS Manager</h3>
+
+- On the Windows 2022 Server Domain Controller, open the DNS Manager.
+
+1. Double-click the host record we created (`domain-controller-server`)
+2. Edit the IP address from `10.0.0.5` to one of Google's IP address `8.8.8.8`
+3. Click `OK` to save.
+
+  <img src="https://github.com/user-attachments/assets/437249e0-2fe3-4475-bd61-633373c75f72" height="80%" width="80%" />
+
+
+**DNS Changes have been saved**
+
+  <img src="https://github.com/user-attachments/assets/f3b2c947-eb52-459a-94c8-a8b144591ac2" height="60%" width="60%" />
+
+
+
+
+
+---
+<br />
+<h3>Ping the Host Record From The Client VM</h3>
+
+- On the Windows 10 Pro VM Client open PowerShell.
+- Run the command `ping domain-controller-server`
+- The client VM will retrive the DNS information from the `local cache` so it has the old dns information for `domain-controller-server` which is `10.0.0.5`.
+- The client VM does not have the updated IP address for `domain-controller-server` which is now 8.8.8.8 as shown below.
+
+  <img src="https://github.com/user-attachments/assets/6631b0bc-7b56-41d8-a78a-f0ed465ae8b1" height="60%" width="60%" />
+
+
+---
+<br />
+<h3>View the Client Local DNS Cache (`ipconfig /displaydns`) </h3>
+
+- On the Windows 10 Pro VM Client, we want to view the local DNS cache.
+- In the PowerShell terminal, run the command `ipconfig /displaydns > outdated-cache.txt`
+- Then use the command `notepad outdated-cache.txt` to view the local DNS cache as shown below. 
+
+  <img src="https://github.com/user-attachments/assets/a13f3bcc-23a9-4d33-b083-19f900759645" height="60%" width="60%" />
+
+
+
+---
+<br />
+<h3>View Local DNS Cache</h3>
+
+- In the text file `outdated-cache.txt` we can see the IP address record for our host name `domain-controller-server` is still pointing to the original IP address (`10.0.0.5`). 
+
+
+
+
+
+
+---
+<br />
+<h3>Flush DNS</h3>
+
+
+- To force the Windows 10 Pro VM client to retrieve the updated DNS from DNS Server instead of its `local cache` we can use the command `ipconfig /flushdns`.
+
+
+  
