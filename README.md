@@ -274,17 +274,54 @@ The purpose of this exercise is to replicate a situation where you have an end-u
 
 - In the text file `outdated-cache.txt` we can see the IP address record for our host name `domain-controller-server` is still pointing to the original IP address (`10.0.0.5`). 
 
-
-
-
+  <img src="https://github.com/user-attachments/assets/d81df949-d7e2-4543-8231-44df0ee3f14c" height="60%" width="60%" />
 
 
 ---
 <br />
-<h3>Flush DNS</h3>
-
+<h3>Flush DNS (`ipconfig /flushdns`) </h3>
 
 - To force the Windows 10 Pro VM client to retrieve the updated DNS from DNS Server instead of its `local cache` we can use the command `ipconfig /flushdns`.
+- On the Windows 10 Pro VM Client open PowerShell.
+- Run the command `ipconfig /flushdns` as shown below.
+- This will flush the local DNS cache so that the next time we attempt to ping our host name (`domain-controller-server`) it will go to the DNS Server and get the latest IP address information which in this example would be `8.8.8.8`).
+
+  <img src="https://github.com/user-attachments/assets/06a690d5-f340-419f-a90d-27cb57ceee11" height="60%" width="60%" />
 
 
-  
+---
+<br />
+<h3>Check The Local DNS Cache After DNS Flush</h3>
+
+- To check the local DNS cache after we flushed the cache, run the command `ipconfig /displaydns`
+- Now, the entry for `domain-controller-server` does not exist so it will be forced to go out to the DNS server to get the latest information instead of using an old record in its local cache.
+- Notice that the DNS cache is able to find the entry for `host.file.server` that we created in the local `hosts.txt` file above.
+- This is because it will check its DNS cache first, then it will check the `hosts.txt` file which is were the record for `host.file.server` resides that we created above.
+
+  <img src="https://github.com/user-attachments/assets/12484479-5bbd-41af-948f-9f91cc2753a5" height="60%" width="60%" />
+
+
+---
+<br />
+<h3>Ping The Host Record `domain-controller-server` Again From The Client</h3>
+
+- Now run the command `ping domain-controller-server` from the Windows 10 Pro VM Client.
+- It will check the DNS Server to get the updated IP address for `domain-controller-server` which is `8.8.8.8` as shown below.
+
+
+  <img src="https://github.com/user-attachments/assets/ff71d53e-a1e7-4a15-b0b4-96d56dda82a4" height="60%" width="60%" />
+
+
+- The local computer checked the local DNS cache because it is fastest. Nothing was in there because we flushed it.
+- Next, the local computer will check the local hosts.txt file. There is no entry for `domain-controller-server`.
+- So, finally, the local computer will check the DNS server to get the updated IP address of `8.8.8.8`.
+
+
+
+---
+---
+<br />
+
+<h2>Create a CNAME Record on Windows 2022 Server Domain Controller</h2>
+
+- Resume from here.
