@@ -1,15 +1,29 @@
 # Create CNAME and A-Records On A Windows 2022 Server Domain Controller
 
 
-
----
 ---
 
-
-X
+<p align="center">
+<img src="https://github.com/user-attachments/assets/bc37714a-9c61-45de-8a98-315d4ecc85af" alt="Microsoft Active Directory Logo"/>
+</p>
 
 ---
 <br />
+
+- **Table of Contents**
+  - [View Windows 10 Pro VM Local DNS Cache]()
+  - [Add a DNS Record to the local hosts file]()
+  - [Edit a DNS A-Record On The Domain Controller]()
+  - [Create a CNAME Record on Windows 2022 Server Domain Controller]()
+
+
+---
+---
+<br />
+
+
+<h2>View Windows 10 Pro VM Local DNS Cache</h2>
+
 
 <h3>Log into the Windows 10 Pro Client</h3>
 
@@ -47,11 +61,15 @@ X
 ---
 <br />
 
-<h2>Add a DNS Record to the local hosts file</h2>
+
 
 
 
 ---
+<br />
+
+<h2>Add a DNS Record to the local hosts file</h2>
+
 <br />
 
 <h3>Open a Text File As Administrator</h3>
@@ -324,4 +342,75 @@ The purpose of this exercise is to replicate a situation where you have an end-u
 
 <h2>Create a CNAME Record on Windows 2022 Server Domain Controller</h2>
 
-- Resume from here.
+- A CNAME maps one human-readable name to another human-readable name.
+- In this example, I will map the host name `get-help` to `www.stackoverflow.com/`.
+
+
+---
+<br />
+
+<h3>DNS Manager > `New Alias (CNAME)`</h3>
+
+- On the Windows 2022 Server VM, open `DNS Manager`.
+
+1. Navigate to `Forward Lookup Zones` > `Domain` (_In this example, IanBates.com_)
+2. Right-click and select `New Alias (CNAME)...` as shown below.
+
+  <img src="https://github.com/user-attachments/assets/c71ae113-8fbc-4c9b-a15c-563e56e33cc3" height="60%" width="60%" />
+
+
+---
+<br />
+
+<h3>Add CNAME Information</h3>
+
+1. Enter the name for the CNAME record. Here I used `get-help`
+2. Enter the Fully Qualified Domain Name (FQDN) for the target host. Here I went with `www.StackOverflow.com`.
+3. Select `OK` as shown below.
+
+
+  <img src="https://github.com/user-attachments/assets/e9dc8ea5-6d48-43db-8b8d-f6f756b614ad" height="40%" width="40%" />
+
+
+
+---
+<br />
+
+<h3>View the new CNAME in DNS Manager</h3>
+
+- We can see our new CNAME record listed in the DNS records of the DNS Manager as shown below.
+
+  <img src="https://github.com/user-attachments/assets/ac869fd2-9284-4609-8a07-d9e866955ec8" height="50%" width="50%" />
+
+
+
+---
+<br />
+
+<h3>Ping the CNAME from the Windows 10 Pro Client</h3>
+
+- From the Windows 10 Pro Client VM, open PowerShell.
+- Ping the CNAME created above by running the command `ping get-help` as shown below.
+- We are able to ping the CNAME `get-help` which returns the IP address for the great site, wwww.StackOverflow.com as shown below with 0% packet loss.
+
+
+  <img src="https://github.com/user-attachments/assets/8c24f2a5-de9b-4507-9717-c8823e60c970" height="50%" width="50%" />
+
+
+
+---
+<br />
+
+<h3>Use `nslookup` On Our CNAME `get-help`</h3>
+
+
+- In the PowerShell terminal on the Windows 10 Pro Client VM, run the command `nslookup` our CNAME `get-help`.
+- Notice that our CNAME is returned as an Alias as shown below.
+
+  <img src="https://github.com/user-attachments/assets/816470fe-21ac-4182-a444-9518fbcdcb84" height="50%" width="50%" />
+
+
+---
+
+
+
