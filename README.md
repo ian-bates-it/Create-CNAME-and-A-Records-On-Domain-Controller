@@ -304,7 +304,7 @@ https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?
 <table>
         <tr>
             <th width="auto">
-              <h2>Part 2: Add A-Record <br /> in `hosts.txt` file <br /> in the Client VM </h2>
+              <h1>Part 2: Add an A-Record <br /> in `hosts.txt` file <br /> on the Client VM </h1>
             </th>
             <th>
               <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="60%" width="60%" />
@@ -388,7 +388,7 @@ https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?
 <table>
         <tr>
             <th width="auto">
-              <h1>Part 3: Create A-Record in DNS Manager <br /> (Domain Controller)</h1>
+              <h1>Part 3: Create A-Record in <br /> DNS Manager <br /> on Domain Controller</h1>
             </th>
             <th>
               <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="60%" width="60%" />
@@ -483,7 +483,7 @@ https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?
 <table>
         <tr>
             <th width="auto">
-              <h1>Part 4: ping A-Record (`domain-controller-server`) <br /> From the Client VM</h1>
+              <h1>Part 4: ping A-Record <br /> (`domain-controller-server`) <br /> from the Client VM</h1>
             </th>
             <th>
               <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="60%" width="60%" />
@@ -510,10 +510,10 @@ https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?
 <table>
         <tr>
             <th width="auto">
-              <h1>Part 5: Edit A-Record (`domain-controller-server`) <br /> In DNS Manager (Controller) </h1>
+              <h1>Part 5: Edit A-Record <br /> (`domain-controller-server`) <br /> In DNS Manager</h1>
             </th>
             <th>
-              <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="60%" width="60%" />
+              <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="80%" width="80%" />
             </th>
         </tr>
 </table>
@@ -556,7 +556,7 @@ The purpose of this exercise is to replicate a situation where you have an end-u
 <table>
         <tr>
             <th width="auto">
-              <h1>Part 6: Update DNS Cache For A-Record <br /> (`domain-controller-server`) in the Client</h1>
+              <h1>Part 6: Update DNS Cache <br /> For A-Record <br /> (`domain-controller-server`) <br /> in the Client</h1>
             </th>
             <th>
               <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="60%" width="60%" />
@@ -644,7 +644,7 @@ The purpose of this exercise is to replicate a situation where you have an end-u
 <table>
         <tr>
             <th width="auto">
-              <h1>Part 7: Create CNAME Record (`get-help`) <br /> in the Controller</h1>
+              <h1>Part 7: Create CNAME Record (`get-help`) in <br /> the Domain Controller</h1>
             </th>
             <th>
               <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="60%" width="60%" />
@@ -705,7 +705,7 @@ The purpose of this exercise is to replicate a situation where you have an end-u
 <table>
         <tr>
             <th width="auto">
-              <h1>Part 8: Run `nslookup` and `ping` on The New CNAME <br /> (`get-help`) in the Client VM</h1>
+              <h1>Part 8: Run `nslookup` and `ping` <br /> on the new CNAME <br /> (`get-help`) in the Client VM</h1>
             </th>
             <th>
               <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="60%" width="60%" />
