@@ -111,7 +111,7 @@ The A-Record converts a human readable hostname to an IP address.
           </a></td>
           <td align="center">
             <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-1-view-local-dns-cache--in-the-client-vm">
-              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="40%" width="40%" />
+              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="50%" width="50%" />
               <br />
               Windows 10 Pro (Client) VM
             </a>
@@ -126,7 +126,7 @@ The A-Record converts a human readable hostname to an IP address.
           </a></td>
           <td align="center">
             <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#add-a-dns-record-to-the-local-hosts-file">
-              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="40%" width="40%" />
+              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="50%" width="50%" />
               <br />
               Windows 10 Pro (Client) VM
             </a>
@@ -141,7 +141,7 @@ The A-Record converts a human readable hostname to an IP address.
           </a></td>            
           <td align="center">
             <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-3-create-a-record-in--dns-manager--on-domain-controller">
-              <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="40%" width="40%" />
+              <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="50%" width="50%" />
               <br />
               Windows 2022 Server 
               <br />
@@ -158,7 +158,7 @@ The A-Record converts a human readable hostname to an IP address.
           </a></td>      
           <td align="center">            
             <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-4-ping-a-record--domain-controller-server--from-the-client-vm">
-              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="40%" width="40%" />
+              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="50%" width="50%" />
               <br />
               Windows 10 Pro (Client) VM
               (Domain Controller) VM
@@ -174,7 +174,7 @@ The A-Record converts a human readable hostname to an IP address.
           </a></td>      
           <td align="center">            
             <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-5-edit-a-record--domain-controller-server--in-dns-manager">
-              <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="40%" width="40%" />
+              <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="50%" width="50%" />
               <br />
               Windows 2022 Server 
               <br />
@@ -191,7 +191,7 @@ The A-Record converts a human readable hostname to an IP address.
           </a></td>      
           <td align="center">            
             <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#ping-the-new-host-record-domain-controller-server-from-the-client-virtual-machine">
-              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="40%" width="40%" />
+              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="50%" width="50%" />
               <br />
               Windows 10 Pro (Client) VM
             </a>            
@@ -206,7 +206,7 @@ The A-Record converts a human readable hostname to an IP address.
           </a></td>      
           <td align="center">            
             <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-7-create-cname-record-get-help-in--the-domain-controller">
-              <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="40%" width="40%" />
+              <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="50%" width="50%" />
               <br />
               Windows 2022 Server 
               <br />
@@ -223,7 +223,7 @@ The A-Record converts a human readable hostname to an IP address.
           </a></td>      
           <td align="center">            
             <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-8-examine-the-new-cname--get-help-in-the-client-vm">
-              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="40%" width="40%" />
+              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="50%" width="50%" />
               <br />
               Windows 10 Pro (Client) VM
             </a>            
