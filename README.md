@@ -1,3 +1,14 @@
+<!--
+Practing with DNS
+
+Windows 2022 Server
+<img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="40%" width="40%" />
+
+Windows 10 Pro
+<img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="40%" width="40%" />
+-->
+
+
 <p align="center">
 <img src="https://github.com/user-attachments/assets/bc37714a-9c61-45de-8a98-315d4ecc85af" alt="Microsoft Active Directory Logo"/>
 </p>
@@ -5,6 +16,11 @@
 # Create CNAME and A-Records On A Windows 2022 Server Domain Controller
 
 - This chapter will make use of the Active Directory infrastructure we created in the [Active Directory Home Lab at this link](https://github.com/ian-bates-it/ian-bates-it/blob/main/README.md#active-directory-home-lab).
+  - We'll need Active Directory running on a virtual machine. In this case, on a Windows Server 2022 Datacenter Azure edition virtual machine acting as the Domain Controller.
+  - We'll need a client machine joined to the domain. In this case, a Windows 10 Pro (21H2) virtual machine acting as the client machine. 
+ 
+- Active Directory Domain Services requires a DNS server to be installed on the network. We installed the DNS Server when we [installed Active Directory and turned a Windows 2022 Server VM into a Domain Controller in Chapter 3 of the Active Directory Home Lab series which you can see at this link.](https://github.com/ian-bates-it/Install-Active-Directory-on-Windows-2022-Server?tab=readme-ov-file#active-directory-domain-services)
+
 
 - The order of operations for a ping request is
   1. Check the local DNS Cache. (Fastest)
@@ -18,6 +34,9 @@
     - Then will ping the new A-Record on the Windows 10 Pro Client VM.
  
 - Then in `Part 3` of this chapter, 
+
+The A-Record converts a human readable hostname to an IP address. 
+
 
 ---
 <br />
@@ -39,19 +58,108 @@
 
 <h2>Operating Systems Used </h2>
 
-- Windows Server 2022 (Domain Controller)
+- Windows Server 2022 Datacenter Azure edition (Domain Controller)
 - Windows 10 Pro (21H2) (Client)
 
 <h2>High-Level Configuration Steps</h2>
 
+<!--
 - Part 1: [View Windows 10 Pro VM Local DNS Cache](https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#view-windows-10-pro-vm-local-dns-cache)
 - Part 2: [Add a DNS Record to the local hosts file](https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#add-a-dns-record-to-the-local-hosts-file)
 - Part 3: [Edit a DNS A-Record On The Domain Controller](https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#edit-a-dns-a-record-on-the-domain-controller)
 - Part 4: [Create a CNAME Record on Windows 2022 Server Domain Controller and ping it from our Windows 10 Pro Client](https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#create-a-cname-record-on-windows-2022-server-domain-controller)
-
-<!--
-- Part 5: []()
+- Part 5: Ping the CNAME Record on the Windows 10 Pro Client
 -->
+
+<table>
+  <thead>
+        <tr>
+            <th width="100px" align="center">
+              Part
+            </th>
+            <th align="center">
+              Description
+            </th>
+            <th align="center">
+              Virtual Machine Used
+            </th>
+        </tr>
+  </thead>
+  <tbody>
+        <tr>
+          <td width="100px" align="center">Part 1:</td>
+          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#view-windows-10-pro-vm-local-dns-cache">View Windows 10 Pro VM Local DNS Cache</a></td>
+          <td align="center">
+            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#view-windows-10-pro-vm-local-dns-cache">
+              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="40%" width="40%" />
+              <br />
+              Windows 10 Pro (Client) VM
+            </a>
+          </td>
+        </tr>        
+        <tr>
+          <td width="100px" align="center">Part 2:</td>
+          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#view-windows-10-pro-vm-local-dns-cache">View Windows 10 Pro VM Local DNS Cache</a></td>
+          <td align="center">
+            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#view-windows-10-pro-vm-local-dns-cache">
+              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="40%" width="40%" />
+              <br />
+              Windows 10 Pro (Client) VM
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td width="100px" align="center">Part 3:</td>      
+          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#edit-a-dns-a-record-on-the-domain-controller">Edit a DNS A-Record On The Domain Controller</a></td>            
+          <td align="center">
+            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#edit-a-dns-a-record-on-the-domain-controller">
+              <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="40%" width="40%" />
+              <br />
+              Windows 2022 Server 
+              <br />
+              (Domain Controller) VM
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td width="100px" align="center">Part 4:</td>      
+          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#ping-the-new-host-record-domain-controller-server-from-the-client-virtual-machine">Ping the new A-Record from the Windows 10 Pro Client VM</a></td>      
+          <td align="center">            
+            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#ping-the-new-host-record-domain-controller-server-from-the-client-virtual-machine">
+              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="40%" width="40%" />
+              <br />
+              Windows 10 Pro (Client) VM
+              (Domain Controller) VM
+            </a>            
+          </td>
+        </tr>  
+        <tr>
+          <td width="100px" align="center">Part 5:</td>      
+          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#create-a-cname-record-on-windows-2022-server-domain-controller">Create a CNAME Record on Windows 2022 Server Domain Controller</a></td>      
+          <td align="center">            
+            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#create-a-cname-record-on-windows-2022-server-domain-controller">
+              <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="40%" width="40%" />
+              <br />
+              Windows 2022 Server 
+              <br />
+              (Domain Controller) VM
+            </a>            
+          </td>
+        </tr>
+        <tr>
+          <td width="100px" align="center">Part 6:</td>      
+          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#ping-the-cname-from-the-windows-10-pro-client">Ping the CNAME Record from our Windows 10 Pro Client</a></td>      
+          <td align="center">            
+            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#ping-the-cname-from-the-windows-10-pro-client">
+              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="40%" width="40%" />
+              <br />
+              Windows 10 Pro (Client) VM
+            </a>            
+          </td>
+        </tr>    
+  </tbody>
+</table>
+
 
 
 <h2>Prerequisites</h2>
@@ -74,7 +182,19 @@
 
 ---
 
-<h1>Part 1:</h1>
+
+
+<table>
+        <tr>
+            <th width="auto">
+              <h1>Part 1: Using the Windows 10 Pro VM (Client)</h1>
+            </th>
+            <th>
+              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="60%" width="60%" />
+            </th>
+        </tr>
+</table>
+
 
 <h2>View Windows 10 Pro VM Local DNS Cache</h2>
 
@@ -117,7 +237,16 @@
 
 ---
 
-<h1>Part 2:</h1>
+<table>
+        <tr>
+            <th width="auto">
+              <h1>Part 2: Using the Windows 10 Pro VM (Client)</h1>
+            </th>
+            <th>
+              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="60%" width="60%" />
+            </th>
+        </tr>
+</table>
 
 <h2>Add a DNS Record to the local hosts file</h2>
 
@@ -190,6 +319,20 @@
 ---
 ---
 <br />
+
+
+<table>
+        <tr>
+            <th width="auto">
+              <h1>Part 3: Using the Windows 2022 Server <br /> (Domain Controller)</h1>
+            </th>
+            <th>
+              <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="40%" width="40%" />
+            </th>
+        </tr>
+</table>
+
+
 
 <h2>Create a DNS A-Record On The Domain Controller</h2>
 
@@ -268,9 +411,23 @@
   <img src="https://github.com/user-attachments/assets/dc9d0114-6de0-4cd4-a059-871f5669358c" height="70%" width="70%" />
 
 
+<br />
+<br />
 
 ---
-<br />
+
+<table>
+        <tr>
+            <th width="auto">
+              <h1>Part 4: Using the Windows 10 Pro VM (Client)</h1>
+            </th>
+            <th>
+              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="60%" width="60%" />
+            </th>
+        </tr>
+</table>
+
+
 <h3>Ping The New Host Record (`domain-controller-server`) From The Client Virtual Machine</h3>
 
 - From the Windows 10 Pro Client VM, we can ping the new Host Record in PowerShell.
@@ -286,7 +443,7 @@
 
 ---
 
-<h1>Part 3:</h1>
+<h1>Part 5:</h1>
 
 <h2>Edit a DNS A-Record On The Domain Controller</h2>
 
@@ -442,8 +599,22 @@ The purpose of this exercise is to replicate a situation where you have an end-u
 
 
 
----
+
 <br />
+<br />
+
+---
+
+<table>
+        <tr>
+            <th width="auto">
+              <h1>Part XX: Using the Windows 10 Pro VM (Client)</h1>
+            </th>
+            <th>
+              <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="60%" width="60%" />
+            </th>
+        </tr>
+</table>
 
 <h3>Ping the CNAME from the Windows 10 Pro Client</h3>
 
