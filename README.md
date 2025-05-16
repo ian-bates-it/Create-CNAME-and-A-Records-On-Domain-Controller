@@ -88,13 +88,13 @@ The A-Record converts a human readable hostname to an IP address.
   <tbody>
         <tr>
           <td width="100px" align="center">Part 1:</td>
-          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#view-windows-10-pro-vm-local-dns-cache">
+          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-1-view-local-dns-cache--in-the-client-vm">
             View the Local DNS Cache on the Client VM
             <br />
             (`ipconfig /disdplaydns`)
           </a></td>
           <td align="center">
-            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#view-windows-10-pro-vm-local-dns-cache">
+            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-1-view-local-dns-cache--in-the-client-vm">
               <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="40%" width="40%" />
               <br />
               Windows 10 Pro (Client) VM
@@ -103,7 +103,7 @@ The A-Record converts a human readable hostname to an IP address.
         </tr>        
         <tr>
           <td width="100px" align="center">Part 2:</td>
-          <td align="center"><a href="">
+          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-2-add-an-a-record--in-hoststxt-file--on-the-client-vm-">
             Add a local A-Record to the `hosts.txt` file on the Client VM
             <br />
             (`127.0.0.1` => `host.file.server`)
@@ -118,13 +118,13 @@ The A-Record converts a human readable hostname to an IP address.
         </tr>
         <tr>
           <td width="100px" align="center">Part 3:</td>      
-          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#create-a-dns-a-record-on-the-domain-controller">
+          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-3-create-a-record-in--dns-manager--on-domain-controller">
             Create an A-Record Using DNS Manager on the Domain Controller
             <br />
             (`domain-controller-server` => 10.0.0.5)
           </a></td>            
           <td align="center">
-            <a href="">
+            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-3-create-a-record-in--dns-manager--on-domain-controller">
               <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="40%" width="40%" />
               <br />
               Windows 2022 Server 
@@ -135,13 +135,13 @@ The A-Record converts a human readable hostname to an IP address.
         </tr>
         <tr>
           <td width="100px" align="center">Part 4:</td>      
-          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#ping-the-new-host-record-domain-controller-server-from-the-client-virtual-machine">
+          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-4-ping-a-record--domain-controller-server--from-the-client-vm">
             Ping the new A-Record Created in the Controller from the Client VM
             <br />
             (ping domain-controller-server)
           </a></td>      
           <td align="center">            
-            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#ping-the-new-host-record-domain-controller-server-from-the-client-virtual-machine">
+            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-4-ping-a-record--domain-controller-server--from-the-client-vm">
               <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="40%" width="40%" />
               <br />
               Windows 10 Pro (Client) VM
@@ -151,7 +151,7 @@ The A-Record converts a human readable hostname to an IP address.
         </tr> 
         <tr>
           <td width="100px" align="center">Part 5:</td>      
-          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#edit-a-dns-a-record-on-the-domain-controller">
+          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-5-edit-a-record--domain-controller-server--in-dns-manager">
             Edit the A-Record in DNS Manager on the Domain Controller
             <br />
             This is done to replicate a situation where an end-user is trying to access a resource where the DNS has changed at the DNS server level and the local Client DNS cache is outdated.
@@ -159,7 +159,7 @@ The A-Record converts a human readable hostname to an IP address.
             (change A-Record `domain-controller-server` from 10.0.0.5 to 8.8.8.8)
           </a></td>      
           <td align="center">            
-            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#edit-a-dns-a-record-on-the-domain-controller">
+            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-5-edit-a-record--domain-controller-server--in-dns-manager">
               <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="40%" width="40%" />
               <br />
               Windows 2022 Server 
@@ -170,7 +170,7 @@ The A-Record converts a human readable hostname to an IP address.
         </tr>
         <tr>
           <td width="100px" align="center">Part 6:</td>      
-          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#ping-the-host-record-from-the-client-vm">
+          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#ping-the-new-host-record-domain-controller-server-from-the-client-virtual-machine">
             Update the local DNS cache on the Client VM for subdomain `domain-controller-server`
             <br />
             To resolve the situation where an end-user is trying to access a resource where the DNS has changed at the DNS server level and the local Client DNS cache is outdated, we will ping the subdomain, view the local DNS cache and then flush the dns to update the subdomain's new A-Record (which is now 8.8.8.8).
@@ -178,7 +178,7 @@ The A-Record converts a human readable hostname to an IP address.
             (ipconfig /flushdns)
           </a></td>      
           <td align="center">            
-            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#ping-the-host-record-from-the-client-vm">
+            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#ping-the-new-host-record-domain-controller-server-from-the-client-virtual-machine">
               <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="40%" width="40%" />
               <br />
               Windows 10 Pro (Client) VM
@@ -187,13 +187,13 @@ The A-Record converts a human readable hostname to an IP address.
         </tr>  
         <tr>
           <td width="100px" align="center">Part 7:</td>      
-          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#create-a-cname-record-on-windows-2022-server-domain-controller">
+          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-7-create-cname-record-get-help-in--the-domain-controller">
             Create a CNAME Record on Windows 2022 Server Domain Controller
             <br />
             (`get-help` => www.StackOverflow.com)
           </a></td>      
           <td align="center">            
-            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#create-a-cname-record-on-windows-2022-server-domain-controller">
+            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-7-create-cname-record-get-help-in--the-domain-controller">
               <img src="https://github.com/user-attachments/assets/4391ac8b-a4ba-42a5-8707-73f55ac21c8d" height="40%" width="40%" />
               <br />
               Windows 2022 Server 
@@ -204,13 +204,13 @@ The A-Record converts a human readable hostname to an IP address.
         </tr>
         <tr>
           <td width="100px" align="center">Part 8:</td>      
-          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#ping-the-cname-from-the-windows-10-pro-client">
+          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-8-examine-the-new-cname--get-help-in-the-client-vm">
             Run `nslookup` and `ping` on the CNAME Record Created in the Controller from the Client
             <br />
             (nslookup get-help)
           </a></td>      
           <td align="center">            
-            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#ping-the-cname-from-the-windows-10-pro-client">
+            <a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-8-examine-the-new-cname--get-help-in-the-client-vm">
               <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="40%" width="40%" />
               <br />
               Windows 10 Pro (Client) VM
