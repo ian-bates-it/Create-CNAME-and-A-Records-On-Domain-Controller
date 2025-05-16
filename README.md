@@ -1,26 +1,65 @@
-# Create CNAME and A-Records On A Windows 2022 Server Domain Controller
-
-
----
-
 <p align="center">
 <img src="https://github.com/user-attachments/assets/bc37714a-9c61-45de-8a98-315d4ecc85af" alt="Microsoft Active Directory Logo"/>
 </p>
 
+# Create CNAME and A-Records On A Windows 2022 Server Domain Controller
+
+
+
 ---
 <br />
 
-- **Table of Contents**
-  - [View Windows 10 Pro VM Local DNS Cache]()
-  - [Add a DNS Record to the local hosts file]()
-  - [Edit a DNS A-Record On The Domain Controller]()
-  - [Create a CNAME Record on Windows 2022 Server Domain Controller]()
+
+<h2>Environments and Technologies Used</h2>
+
+- Microsoft Azure (Virtual Machines/Compute)
+- Remote Desktop
+- Windows Administrative Tools > DNS Manager
+
+<!--
+- Active Directory DNS Manager
 
 
----
----
+<!--
+- Active Directory Domain Services
+-->
+
+<h2>Operating Systems Used </h2>
+
+- Windows Server 2022 (Domain Controller)
+- Windows 10 Pro (21H2) (Client)
+
+<h2>High-Level Configuration Steps</h2>
+
+- Part 1: [View Windows 10 Pro VM Local DNS Cache](https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#view-windows-10-pro-vm-local-dns-cache)
+- Part 2: [Add a DNS Record to the local hosts file](https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#add-a-dns-record-to-the-local-hosts-file)
+- Part 3: [Edit a DNS A-Record On The Domain Controller](https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#edit-a-dns-a-record-on-the-domain-controller)
+- Part 4: [Create a CNAME Record on Windows 2022 Server Domain Controller](https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#create-a-cname-record-on-windows-2022-server-domain-controller)
+- Part 5: []()
+
+
+
+<h2>Prerequisites</h2>
+
+1. Complete [Chapter 1 of Active Directory Home Lab series, Creating a Windows 10 Pro and Windows 2022 Server Virtual Machines in Azure.](https://github.com/ian-bates-it/Azure-Virtual-Machine-Setup)
+
+2. Complete [Chapter 2 of the Active Directory Home Lab series, Configuring the Windows 10 Pro (Client) to use the static private IP of our Windows 2022 Server Domain Controller as its DNS Server.](https://github.com/ian-bates-it/Azure-Controller-Client-Configuration)
+
+3. Complete [Chapter 3 of the Active Directory Home Lab series, Installing Active Directory on a Windows 2022 Server VM and promoting it to a Domain Controller.](https://github.com/ian-bates-it/Install-Active-Directory-on-Windows-2022-Server)
+
+<!--
+4. Complete [Chapter 4 of the Active Directory Home Lab series, Create Organizational Units and Users in Active Directory.](https://github.com/ian-bates-it/Active-Directory-Users-And-Computers)
+-->
+
+4. Complete [Chapter 5 of the Active Directory Home Lab series, Joining a Windows 10 Pro Client to a Windows 2022 Server Domain Controller.](https://github.com/ian-bates-it/Join-A-Client-To-A-Domain)
+
+
+<br />
 <br />
 
+---
+
+<h1>Part 1:</h1>
 
 <h2>View Windows 10 Pro VM Local DNS Cache</h2>
 
@@ -57,16 +96,13 @@
   <img src="https://github.com/user-attachments/assets/7284741f-56fa-4209-be8b-621b71cdd2be" height="50%" width="50%" />
 
 
----
----
+
+<br />
 <br />
 
-
-
-
-
 ---
-<br />
+
+<h1>Part 2:</h1>
 
 <h2>Add a DNS Record to the local hosts file</h2>
 
@@ -112,25 +148,28 @@
 
 <h3>ping the new host name</h3>
 
-- 
 - Before editing the `hosts.txt` file, pinging `host.file.server` will return an error (`Ping request cound not find host` as shown below.
 
-  <img src="https://github.com/user-attachments/assets/5fa8da57-599d-40e9-b4a5-2f4fa7605c5f" height="50%" width="50%" />
+  <img src="https://github.com/user-attachments/assets/5fa8da57-599d-40e9-b4a5-2f4fa7605c5f" height="90%" width="90%" />
 
 
 
 <br />
+
 - After updating the local `hosts.txt` file, we can now ping our new host name (`host.file.server`) with 0% packet loss as shown below:
+- 
+<br />
 
   <img src="https://github.com/user-attachments/assets/3d483f52-4167-4947-8037-351c3e940b0b" height="50%" width="50%" />
 
 
 <br />
+<br />
 
 - The ping order of operations runs as follows.
-1. Check the local DNS Cache.
-2. Check the local Host File. (`Where our mainserver record exists`)
-3. Check the DNS Server.  
+  1. Check the local DNS Cache.
+  2. Check the local Host File. (`Where our mainserver record exists`)
+  3. Check the DNS Server.  
 
 
 ---
@@ -226,12 +265,13 @@
   <img src="https://github.com/user-attachments/assets/aa047de8-5e98-4ee6-9af7-627d5044e7f3" height="60%" width="60%" />
 
 
----
 
-
----
----
 <br />
+<br />
+
+---
+
+<h1>Part 3:</h1>
 
 <h2>Edit a DNS A-Record On The Domain Controller</h2>
 
@@ -336,9 +376,12 @@ The purpose of this exercise is to replicate a situation where you have an end-u
 
 
 
----
----
 <br />
+<br />
+
+---
+
+<h1>Part 4:</h1>
 
 <h2>Create a CNAME Record on Windows 2022 Server Domain Controller</h2>
 
@@ -356,7 +399,7 @@ The purpose of this exercise is to replicate a situation where you have an end-u
 1. Navigate to `Forward Lookup Zones` > `Domain` (_In this example, IanBates.com_)
 2. Right-click and select `New Alias (CNAME)...` as shown below.
 
-  <img src="https://github.com/user-attachments/assets/c71ae113-8fbc-4c9b-a15c-563e56e33cc3" height="60%" width="60%" />
+  <img src="https://github.com/user-attachments/assets/c71ae113-8fbc-4c9b-a15c-563e56e33cc3" height="90%" width="90%" />
 
 
 ---
