@@ -21,7 +21,23 @@ Windows 10 Pro
  
 - Active Directory Domain Services requires a DNS server to be installed on the network. We installed the DNS Server when we [installed Active Directory and turned a Windows 2022 Server VM into a Domain Controller in Chapter 3 of the Active Directory Home Lab series which you can see at this link.](https://github.com/ian-bates-it/Install-Active-Directory-on-Windows-2022-Server?tab=readme-ov-file#active-directory-domain-services)
 
+- In `Part 1` we'll view the local DNS cache on the Windows 10 Pro Client VM with `ipconfig /displaydns > cache.txt`
+- In `Part 2` we'll create an A-Record in the `hosts.txt` file on the Windows 10 Pro Client VM, mapping our loopback address to a hostname (127.0.0.1 `host.file.server`).
+- In `Part 3` we'll use the DNS Manager in the Windows 2022 Server Domain Controller to create an A-Record mapping hostname `domain-controller-server` to IP address 10.0.0.5.
+- In `Part 4` we'll use the Windows 10 Pro Client VM to ping the A-Record we created in `Part 3`, `ping domain-controller-server`.
+- In `Part 5` we'll use the DNS Manager in the Windows 2022 Server Domain Controller to edit the IP address mapped to our hostname `domain-controller-server` that we set up in `Part 3` above.
+    - The purpose of this is to replicate a situation where an end-user is trying to access a resource where the DNS has changed at the DNS server level and the local Client DNS cache is outdated.
+    - We will update the A-Record mapping for hostname `domain-controller-server` from its original `10.0.0.5` to one of google's servers at `8.8.8.8`.
+- In `Part 6` we'll confirm that the Windows 10 Pro Client VM has an outdated DNS mapping for our A-Record (`domain-controller-server`)
+    - The local DNS cache for the Client VM will show that `domain-controller-server` is still pointing to the old IP address of `10.0.0.5`
+    - We will then flush the DNS cache for the Client VM (`ipconfig /flushdns`) to update the hostname's new A-Record (which is now 8.8.8.8).
+    - The purpose of this `Part 6` is to identify and resolve the situation where an end-user is trying to access a resource where the DNS has changed at the DNS server level and the local Client DNS cache is outdated.
+- In `Part 7` we will use the DNS Manager in the Windows 2022 Server Domain Controller to create a CNAME record.
+    - In this example I will create the following DNS CNAME mapping in DNS Server: (`get-help` => www.StackOverflow.com)
+- In `Part 8` we will use the Windows 10 Pro Client VM to observe the new CNAME record (`get-help`) with `nslookup` and `ping`
 
+
+<!--
 - The order of operations for a ping request is
   1. Check the local DNS Cache. (Fastest)
   2. Check the local Host file. (Medium Speed)
@@ -36,7 +52,7 @@ Windows 10 Pro
 - Then in `Part 3` of this chapter, 
 
 The A-Record converts a human readable hostname to an IP address. 
-
+-->
 
 ---
 <br />
@@ -154,8 +170,6 @@ The A-Record converts a human readable hostname to an IP address.
           <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#part-5-edit-a-record--domain-controller-server--in-dns-manager">
             Edit the A-Record in DNS Manager on the Domain Controller
             <br />
-            This is done to replicate a situation where an end-user is trying to access a resource where the DNS has changed at the DNS server level and the local Client DNS cache is outdated.
-            <br />
             (change A-Record `domain-controller-server` from 10.0.0.5 to 8.8.8.8)
           </a></td>      
           <td align="center">            
@@ -172,8 +186,6 @@ The A-Record converts a human readable hostname to an IP address.
           <td width="100px" align="center">Part 6:</td>      
           <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#ping-the-new-host-record-domain-controller-server-from-the-client-virtual-machine">
             Update the local DNS cache on the Client VM for subdomain `domain-controller-server`
-            <br />
-            To resolve the situation where an end-user is trying to access a resource where the DNS has changed at the DNS server level and the local Client DNS cache is outdated, we will ping the subdomain, view the local DNS cache and then flush the dns to update the subdomain's new A-Record (which is now 8.8.8.8).
             <br />
             (ipconfig /flushdns)
           </a></td>      
