@@ -4,7 +4,20 @@
 
 # Create CNAME and A-Records On A Windows 2022 Server Domain Controller
 
+- This chapter will make use of the Active Directory infrastructure we created in the [Active Directory Home Lab at this link](https://github.com/ian-bates-it/ian-bates-it/blob/main/README.md#active-directory-home-lab).
 
+- The order of operations for a ping request is
+  1. Check the local DNS Cache. (Fastest)
+  2. Check the local Host file. (Medium Speed)
+  3. Check the DNS Server. (Slowest)
+- So we will check the local DNS cache on the Windows 10 Pro client VM with `ipconfig /displaydns`
+    - Then we will clear the DNS cache with `ipconfig /flushdns`
+- Then we will map a hostname (host.file.server) to our loopback address (127.0.0.1) in the Windows 10 Pro client VM's `hosts.txt` file.
+
+- Then we will create a new A-Record on the Windows 2022 Server DNS Manger (`domain-controller-server.IanBates.com`).
+    - Then will ping the new A-Record on the Windows 10 Pro Client VM.
+ 
+- Then in `Part 3` of this chapter, 
 
 ---
 <br />
@@ -34,9 +47,11 @@
 - Part 1: [View Windows 10 Pro VM Local DNS Cache](https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#view-windows-10-pro-vm-local-dns-cache)
 - Part 2: [Add a DNS Record to the local hosts file](https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#add-a-dns-record-to-the-local-hosts-file)
 - Part 3: [Edit a DNS A-Record On The Domain Controller](https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#edit-a-dns-a-record-on-the-domain-controller)
-- Part 4: [Create a CNAME Record on Windows 2022 Server Domain Controller](https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#create-a-cname-record-on-windows-2022-server-domain-controller)
-- Part 5: []()
+- Part 4: [Create a CNAME Record on Windows 2022 Server Domain Controller and ping it from our Windows 10 Pro Client](https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#create-a-cname-record-on-windows-2022-server-domain-controller)
 
+<!--
+- Part 5: []()
+-->
 
 
 <h2>Prerequisites</h2>
