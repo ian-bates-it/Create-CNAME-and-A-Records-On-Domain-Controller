@@ -103,7 +103,7 @@ The A-Record converts a human readable hostname to an IP address.
         </tr>        
         <tr>
           <td width="100px" align="center">Part 2:</td>
-          <td align="center"><a href="https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?tab=readme-ov-file#add-a-dns-record-to-the-local-hosts-file">
+          <td align="center"><a href="">
             Add a local A-Record to the `hosts.txt` file on the Client VM
             <br />
             (`127.0.0.1` => `host.file.server`)
@@ -251,7 +251,7 @@ https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?
 <table>
         <tr>
             <th width="auto">
-              <h1>Part 1: Using the Windows 10 Pro VM (Client)</h1>
+              <h1>Part 1: View Local DNS Cache <br /> in the Client VM</h1>
             </th>
             <th>
               <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="60%" width="60%" />
@@ -304,7 +304,7 @@ https://github.com/ian-bates-it/Create-CNAME-and-A-Records-On-Domain-Controller?
 <table>
         <tr>
             <th width="auto">
-              <h1>Part 2: Using the Windows 10 Pro VM (Client)</h1>
+              <h2>Part 2: Add A-Record <br /> in `hosts.txt` file <br /> in the Client VM </h2>
             </th>
             <th>
               <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="60%" width="60%" />
