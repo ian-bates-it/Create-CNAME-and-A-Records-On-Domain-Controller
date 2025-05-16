@@ -705,7 +705,7 @@ The purpose of this exercise is to replicate a situation where you have an end-u
 <table>
         <tr>
             <th width="auto">
-              <h1>Part 8: Run `nslookup` and `ping` <br /> on the new CNAME <br /> (`get-help`) in the Client VM</h1>
+              <h1>Part 8: Examine the new CNAME <br /> (`get-help`) in the Client VM</h1>
             </th>
             <th>
               <img src="https://github.com/user-attachments/assets/252c9ea9-5aaf-4c0a-9f04-758124b08087" height="60%" width="60%" />
